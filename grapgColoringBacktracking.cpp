@@ -66,10 +66,3 @@ int main(){
      graphColoring(graph,m);
 
 }
-echo "# CP_ALGORITHM" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/AMIT-BANIK/CP_ALGORITHM.git
-git push -u origin main
