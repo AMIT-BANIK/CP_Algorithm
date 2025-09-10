@@ -33,17 +33,14 @@ bool compareSort(const Point &a, const Point &b) {
 }
 
 vector<Point> graham(vector<Point> &points) {
-    
     p0 = *min_element(points.begin(), points.end(), compareMinElement);
     
     sort(points.begin(), points.end(), compareSort);
 
-    // Step 3: Initialize stack
     stack<Point> st;
     st.push(points[0]);
     st.push(points[1]);
 
-    // Step 4: Process rest
     for (int i = 2; i < points.size(); i++) {
         Point top = st.top(); st.pop();
         while (!st.empty() && orientation(st.top(), top, points[i]) != 1) {
@@ -53,7 +50,6 @@ vector<Point> graham(vector<Point> &points) {
         st.push(points[i]);
     }
 
-    
     vector<Point> hull;
     while (!st.empty()) {
         hull.push_back(st.top());
@@ -64,11 +60,19 @@ vector<Point> graham(vector<Point> &points) {
 }
 
 int main() {
-    vector<Point> points = {{0,3}, {2,2}, {1,1}, {2,1}, {3,0}, {0,0}, {3,3}};
+    int n;
+    cin >> n;
+
+    vector<Point> points(n);
+    for (int i = 0; i < n; i++) {
+        cin >> points[i].x >> points[i].y;
+    }
+
     vector<Point> hull = graham(points);
 
-    cout << "Convex Hull Points:" << endl;
+    cout << "\nConvex Hull Points:\n";
     for (auto &p : hull) {
-        cout << "(" << p.x << ", " << p.y << ")" << endl;
+        cout << "(" << p.x << ", " << p.y << ")\n";
     }
+    return 0;
 }
