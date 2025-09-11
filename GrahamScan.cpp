@@ -70,7 +70,6 @@ int main() {
 
     vector<Point> hull = graham(points);
 
-    cout << "\nConvex Hull Points:\n";
     for (auto &p : hull) {
         cout << "(" << p.x << ", " << p.y << ")\n";
     }
